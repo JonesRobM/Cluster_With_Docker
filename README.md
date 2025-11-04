@@ -20,11 +20,20 @@ Cluster_With_Docker/
 │   ├── models.py              # KNN and HDBSCAN model wrappers
 │   ├── metrics.py             # Evaluation metrics
 │   └── visualisation.py       # Plotting functions
+├── tests/                      # Test suite
+│   ├── __init__.py
+│   ├── conftest.py            # Shared test fixtures
+│   ├── test_data_loader.py   # Tests for data loading
+│   ├── test_models.py         # Tests for models
+│   ├── test_metrics.py        # Tests for metrics
+│   ├── test_visualisation.py  # Tests for visualisation
+│   └── test_evaluate.py       # Integration tests
 ├── outputs/                    # Generated results
 │   ├── plots/                 # Visualisations (PCA, confusion matrix)
 │   └── metrics/               # Metrics (JSON, CSV)
 ├── evaluate.py                # Main evaluation script
 ├── requirements.txt           # Python dependencies
+├── pytest.ini                 # Pytest configuration
 ├── Dockerfile                 # Docker container definition
 ├── docker-compose.yml         # Docker Compose configuration
 ├── CLAUDE.md                  # Experiment design documentation
@@ -84,6 +93,22 @@ pip install -r requirements.txt
 
 ```bash
 python evaluate.py
+```
+
+### Run tests
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage report
+pytest --cov=src --cov-report=html
+
+# Run specific test file
+pytest tests/test_models.py
+
+# Run tests with verbose output
+pytest -v
 ```
 
 ## Models
