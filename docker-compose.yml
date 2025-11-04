@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  iris-experiment:
+    build: .
+    container_name: iris-clustering-experiment
+    volumes:
+      # Mount outputs directory to persist results
+      - ./outputs:/app/outputs
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python evaluate.py

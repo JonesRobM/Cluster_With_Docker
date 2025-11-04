@@ -14,6 +14,11 @@ dist/
 downloads/
 eggs/
 .eggs/
+claude/
+.claude/
+.claude/*
+CLAUDE*
+*claude*
 lib/
 lib64/
 parts/
