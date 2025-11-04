@@ -14,8 +14,6 @@ RUN apt-get update && apt-get install -y \
 COPY pyproject.toml .
 COPY MANIFEST.in .
 COPY requirements.txt .
-COPY README.md .
-COPY LICENSE .
 
 # Copy source code
 COPY src/ ./src/

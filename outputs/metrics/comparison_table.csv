@@ -1,0 +1,6 @@
+Metric,Value
+Accuracy (KNN),0.9333
+ARI (HDBSCAN),0.5394
+NMI (HDBSCAN),0.6778
+Clusters Found (HDBSCAN),2
+Noise Points (HDBSCAN),2
