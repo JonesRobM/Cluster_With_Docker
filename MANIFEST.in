@@ -1,0 +1,27 @@
+# Include important documentation files
+include README.md
+include LICENSE
+include CLAUDE.md
+include requirements.txt
+include pytest.ini
+
+# Include Docker files
+include Dockerfile
+include docker-compose.yml
+include .dockerignore
+
+# Include source files
+recursive-include src *.py
+
+# Include tests
+recursive-include tests *.py
+
+# Include the main evaluation script
+include evaluate.py
+
+# Exclude compiled and cache files
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *$py.class
+global-exclude *.so
+global-exclude .DS_Store

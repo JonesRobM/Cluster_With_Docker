@@ -10,21 +10,22 @@ RUN apt-get update && apt-get install -y \
     g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements file
+# Copy package files
+COPY pyproject.toml .
+COPY MANIFEST.in .
 COPY requirements.txt .
+COPY README.md .
+COPY LICENSE .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy project files
+# Copy source code
 COPY src/ ./src/
 COPY evaluate.py .
 
+# Install the package with all dependencies
+RUN pip install --no-cache-dir .
+
 # Create output directories
 RUN mkdir -p outputs/plots outputs/metrics
-
-# Set Python path
-ENV PYTHONPATH=/app
 
 # Run evaluation script by default
 CMD ["python", "evaluate.py"]

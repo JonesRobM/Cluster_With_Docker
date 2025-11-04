@@ -10,6 +10,20 @@ This project implements an experiment comparing:
 
 Both models are evaluated on the classic Iris dataset with standardised features and PCA visualisation.
 
+## Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd Cluster_With_Docker
+
+# Install the package
+pip install .
+
+# OR for development (editable mode with tests)
+pip install -e ".[dev]"
+```
+
 ## Project Structure
 
 ```
@@ -33,6 +47,8 @@ Cluster_With_Docker/
 │   └── metrics/               # Metrics (JSON, CSV)
 ├── evaluate.py                # Main evaluation script
 ├── requirements.txt           # Python dependencies
+├── pyproject.toml             # Package configuration and metadata
+├── MANIFEST.in                # Package distribution manifest
 ├── pytest.ini                 # Pytest configuration
 ├── Dockerfile                 # Docker container definition
 ├── docker-compose.yml         # Docker Compose configuration
@@ -70,7 +86,7 @@ After running, check the `outputs/` directory:
 ## Local Development
 
 ### Prerequisites
-- Python 3.11+
+- Python 3.8+
 - pip
 
 ### Setup
@@ -85,8 +101,14 @@ venv\Scripts\activate
 # On Unix/macOS:
 source venv/bin/activate
 
-# Install dependencies
-pip install -r requirements.txt
+# Install package with dependencies
+pip install .
+
+# OR install in editable mode for development
+pip install -e .
+
+# OR install with test dependencies
+pip install -e ".[dev]"
 ```
 
 ### Run the experiment
