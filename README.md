@@ -83,6 +83,83 @@ After running, check the `outputs/` directory:
 - `evaluation_metrics.json` - Detailed metrics in JSON format
 - `comparison_table.csv` - Comparison table in CSV format
 
+## Expected Results
+
+After running the evaluation, you should see the following results:
+
+### Performance Metrics
+
+```
+Metric                      Value
+-----------------------------------------
+Accuracy (KNN)             ~0.93-0.97
+ARI (HDBSCAN)              ~0.50-0.60
+NMI (HDBSCAN)              ~0.65-0.75
+Clusters Found (HDBSCAN)   2-3
+Noise Points (HDBSCAN)     0-5
+```
+
+### Visualizations Explained
+
+#### 1. KNN Clusters (`knn_clusters.png`)
+
+**Left panel (True Labels):** Shows the actual iris species in PCA space
+- Three distinct clusters representing setosa, versicolor, and virginica
+- Setosa (typically purple/yellow) is well-separated from the other two species
+- Versicolor and virginica have some overlap in the feature space
+
+**Right panel (Predicted Clusters):** Shows KNN predictions on the test set
+- Should closely match the true labels with high accuracy (~93-97%)
+- Misclassifications typically occur at the boundary between versicolor and virginica
+- The overlap region is where KNN may struggle
+
+**What to look for:**
+- Strong agreement between left and right panels
+- Most prediction errors in the overlapping region between versicolor/virginica
+- Clear separation of setosa from other species
+
+#### 2. HDBSCAN Clusters (`hdbscan_clusters.png`)
+
+**Left panel (True Labels):** Ground truth species labels
+
+**Right panel (Predicted Clusters):** HDBSCAN unsupervised clustering results
+- Typically finds 2-3 clusters
+- Often groups versicolor and virginica together as a single cluster
+- May identify some points as noise (shown in different color)
+- Lower correspondence to true labels compared to KNN (expected for unsupervised)
+
+**What to look for:**
+- HDBSCAN successfully identifies setosa as a separate cluster
+- Versicolor and virginica are often merged into one cluster due to their overlap
+- Noise points (if any) typically appear in the overlap region
+- This demonstrates the challenge of unsupervised learning without label information
+
+#### 3. Confusion Matrix (`knn_confusion_matrix.png`)
+
+Shows KNN classification performance across all three species:
+- **Diagonal values** (top-left to bottom-right): Correct predictions
+- **Off-diagonal values**: Misclassifications
+
+**Expected pattern:**
+- High values on the diagonal (10 correct predictions per class in test set)
+- Setosa: Perfect or near-perfect classification (10/10)
+- Versicolor/Virginica: Occasional confusion (1-2 misclassifications)
+- Most errors between versicolor ↔ virginica (not setosa)
+
+#### 4. Metrics Comparison (`metrics_comparison.png`)
+
+Summary table comparing both approaches:
+- **KNN Accuracy**: 93-97% - High performance with labeled training data
+- **HDBSCAN ARI**: 50-60% - Moderate agreement with true labels
+- **HDBSCAN NMI**: 65-75% - Moderate mutual information with true clustering
+- **Clusters Found**: Shows HDBSCAN typically finds 2 clusters vs. 3 true classes
+- **Noise Points**: Small number of points HDBSCAN couldn't assign to any cluster
+
+**Key Insights:**
+1. **Supervised vs Unsupervised**: KNN (supervised) significantly outperforms HDBSCAN (unsupervised) because it learns from labeled examples
+2. **Cluster Detection**: HDBSCAN's 2-cluster result reflects the natural structure in the data (setosa vs. versicolor/virginica)
+3. **Real-world Application**: Use KNN when labels are available; use HDBSCAN for exploratory analysis or when labels are unavailable
+
 ## Local Development
 
 ### Prerequisites
