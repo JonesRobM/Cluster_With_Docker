@@ -101,7 +101,9 @@ Noise Points (HDBSCAN)     0-5
 
 ### Visualizations Explained
 
-#### 1. KNN Clusters (`knn_clusters.png`)
+#### 1. KNN Clusters
+
+![KNN clusters (PCA)](output/plots/knn-clusters.png)
 
 **Left panel (True Labels):** Shows the actual iris species in PCA space
 - Three distinct clusters representing setosa, versicolor, and virginica
