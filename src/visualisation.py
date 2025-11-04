@@ -1,4 +1,4 @@
-"""Visualization module for clustering results."""
+"""Visualisation module for clustering results."""
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -22,7 +22,7 @@ def plot_pca_clusters(X_pca, y_true, y_pred, title, target_names=None, save_path
     scatter1 = axes[0].scatter(
         X_pca[:, 0], X_pca[:, 1],
         c=y_true, cmap='viridis',
-        s=50, alpha=0.6, edgecolors='k'
+        s=50, alpha=0.6, edgecolours='k'
     )
     axes[0].set_title('True Labels')
     axes[0].set_xlabel('PC1')
@@ -34,18 +34,18 @@ def plot_pca_clusters(X_pca, y_true, y_pred, title, target_names=None, save_path
             title="Classes"
         )
     else:
-        plt.colorbar(scatter1, ax=axes[0])
+        plt.colourbar(scatter1, ax=axes[0])
 
     # Plot predicted clusters
     scatter2 = axes[1].scatter(
         X_pca[:, 0], X_pca[:, 1],
         c=y_pred, cmap='viridis',
-        s=50, alpha=0.6, edgecolors='k'
+        s=50, alpha=0.6, edgecolours='k'
     )
     axes[1].set_title(f'Predicted Clusters ({title})')
     axes[1].set_xlabel('PC1')
     axes[1].set_ylabel('PC2')
-    plt.colorbar(scatter2, ax=axes[1])
+    plt.colourbar(scatter2, ax=axes[1])
 
     plt.tight_layout()
 
@@ -99,7 +99,7 @@ def plot_comparison_metrics(comparison_df, save_path=None):
         cellText=comparison_df.values,
         colLabels=comparison_df.columns,
         cellLoc='left',
-        loc='center'
+        loc='centre'
     )
 
     table.auto_set_font_size(False)
@@ -108,8 +108,8 @@ def plot_comparison_metrics(comparison_df, save_path=None):
 
     # Style header
     for i in range(len(comparison_df.columns)):
-        table[(0, i)].set_facecolor('#4CAF50')
-        table[(0, i)].set_text_props(weight='bold', color='white')
+        table[(0, i)].set_facecolour('#4CAF50')
+        table[(0, i)].set_text_props(weight='bold', colour='white')
 
     plt.title('Model Comparison Metrics', fontsize=14, weight='bold', pad=20)
 

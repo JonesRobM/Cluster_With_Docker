@@ -5,12 +5,12 @@ from pathlib import Path
 
 from src.data_loader import (
     load_and_preprocess_data,
-    standardize_features,
+    standardise_features,
     reduce_dimensions
 )
 from src.models import KNNModel, HDBSCANModel
 from src.metrics import evaluate_knn, evaluate_hdbscan, create_comparison_table
-from src.visualization import (
+from src.visualisation import (
     plot_pca_clusters,
     plot_confusion_matrix,
     plot_comparison_metrics
@@ -40,19 +40,19 @@ def main():
     print(f"  Features: {feature_names}")
     print(f"  Classes: {list(target_names)}")
 
-    # 2. Standardize features
-    print("\n[2/6] Standardizing features...")
-    X_train_scaled, X_test_scaled, scaler = standardize_features(X_train, X_test)
+    # 2. Standardise features
+    print("\n[2/6] Standardising features...")
+    X_train_scaled, X_test_scaled, scaler = standardise_features(X_train, X_test)
 
     # For HDBSCAN, use the full dataset
     import numpy as np
     X_full = np.vstack([X_train, X_test])
     y_full = np.hstack([y_train, y_test])
-    X_full_scaled, _ = standardize_features(X_full)
+    X_full_scaled, _ = standardise_features(X_full)
 
     # 3. Train and evaluate KNN
-    print("\n[3/6] Training K-Nearest Neighbors...")
-    knn = KNNModel(n_neighbors=5, metric='euclidean')
+    print("\n[3/6] Training K-Nearest Neighbours...")
+    knn = KNNModel(n_neighbours=5, metric='euclidean')
     knn.train(X_train_scaled, y_train)
     y_pred_knn = knn.predict(X_test_scaled)
 
@@ -70,10 +70,10 @@ def main():
     print(f"  Clusters found: {hdbscan_metrics['n_clusters']}")
     print(f"  Noise points: {hdbscan_metrics['n_noise']}")
 
-    # 5. Generate visualizations
-    print("\n[5/6] Generating visualizations...")
+    # 5. Generate visualisations
+    print("\n[5/6] Generating visualisations...")
 
-    # PCA for visualization
+    # PCA for visualisation
     X_test_pca, pca_test = reduce_dimensions(X_test_scaled, n_components=2)
     X_full_pca, pca_full = reduce_dimensions(X_full_scaled, n_components=2)
 

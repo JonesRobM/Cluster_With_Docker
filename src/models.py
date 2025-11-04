@@ -7,18 +7,18 @@ import numpy as np
 class KNNModel:
     """K-Nearest Neighbors classifier wrapper."""
 
-    def __init__(self, n_neighbors=5, metric='euclidean'):
+    def __init__(self, n_neighbours=5, metric='euclidean'):
         """
-        Initialize KNN model.
+        Initialise KNN model.
 
         Args:
-            n_neighbors: Number of neighbors to use
+            n_neighbours: Number of neighbours to use
             metric: Distance metric to use
         """
-        self.n_neighbors = n_neighbors
+        self.n_neighbours = n_neighbours
         self.metric = metric
         self.model = KNeighborsClassifier(
-            n_neighbors=n_neighbors,
+            n_neighbors=n_neighbours,
             metric=metric
         )
 
@@ -40,11 +40,11 @@ class HDBSCANModel:
 
     def __init__(self, min_cluster_size=5, min_samples=None):
         """
-        Initialize HDBSCAN model.
+        Initialise HDBSCAN model.
 
         Args:
             min_cluster_size: Minimum size of clusters
-            min_samples: Minimum number of samples in a neighborhood
+            min_samples: Minimum number of samples in a neighbourhood
         """
         self.min_cluster_size = min_cluster_size
         self.min_samples = min_samples

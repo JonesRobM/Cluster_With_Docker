@@ -29,9 +29,9 @@ def load_and_preprocess_data(test_size=0.2, random_state=42):
     return X_train, X_test, y_train, y_test, iris.feature_names, iris.target_names
 
 
-def standardize_features(X_train, X_test=None):
+def standardise_features(X_train, X_test=None):
     """
-    Standardize features using StandardScaler.
+    Standardise features using StandardScaler.
 
     Args:
         X_train: Training features
@@ -54,7 +54,7 @@ def standardize_features(X_train, X_test=None):
 
 def reduce_dimensions(X, n_components=2):
     """
-    Apply PCA for dimensionality reduction (for visualization).
+    Apply PCA for dimensionality reduction (for visualisation).
 
     Args:
         X: Feature matrix

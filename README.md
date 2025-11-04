@@ -1,14 +1,14 @@
 # Iris Classification Experiment: KNN vs HDBSCAN
 
-Comparative analysis of supervised classification (K-Nearest Neighbors) and unsupervised clustering (HDBSCAN) on the Iris dataset.
+Comparative analysis of supervised classification (K-Nearest Neighbours) and unsupervised clustering (HDBSCAN) on the Iris dataset.
 
 ## Overview
 
 This project implements an experiment comparing:
-- **K-Nearest Neighbors (KNN)**: Supervised classification
+- **K-Nearest Neighbours (KNN)**: Supervised classification
 - **HDBSCAN**: Hierarchical density-based clustering (unsupervised)
 
-Both models are evaluated on the classic Iris dataset with standardized features and PCA visualization.
+Both models are evaluated on the classic Iris dataset with standardised features and PCA visualisation.
 
 ## Project Structure
 
@@ -19,9 +19,9 @@ Cluster_With_Docker/
 │   ├── data_loader.py         # Data loading and preprocessing
 │   ├── models.py              # KNN and HDBSCAN model wrappers
 │   ├── metrics.py             # Evaluation metrics
-│   └── visualization.py       # Plotting functions
+│   └── visualisation.py       # Plotting functions
 ├── outputs/                    # Generated results
-│   ├── plots/                 # Visualizations (PCA, confusion matrix)
+│   ├── plots/                 # Visualisations (PCA, confusion matrix)
 │   └── metrics/               # Metrics (JSON, CSV)
 ├── evaluate.py                # Main evaluation script
 ├── requirements.txt           # Python dependencies
@@ -49,10 +49,10 @@ This will:
 After running, check the `outputs/` directory:
 
 **Plots** (`outputs/plots/`):
-- `knn_clusters.png` - PCA visualization of KNN predictions
-- `hdbscan_clusters.png` - PCA visualization of HDBSCAN clusters
+- `knn_clusters.png` - PCA visualisation of KNN predictions
+- `hdbscan_clusters.png` - PCA visualisation of HDBSCAN clusters
 - `knn_confusion_matrix.png` - KNN confusion matrix
-- `metrics_comparison.png` - Comparison table visualization
+- `metrics_comparison.png` - Comparison table visualisation
 
 **Metrics** (`outputs/metrics/`):
 - `evaluation_metrics.json` - Detailed metrics in JSON format
@@ -88,15 +88,15 @@ python evaluate.py
 
 ## Models
 
-### K-Nearest Neighbors (KNN)
+### K-Nearest Neighbours (KNN)
 - **Type**: Supervised classifier
-- **Parameters**: `n_neighbors=5`, `metric='euclidean'`
+- **Parameters**: `n_neighbours=5`, `metric='euclidean'`
 - **Metric**: Accuracy on test split
 
 ### HDBSCAN
 - **Type**: Unsupervised clustering
 - **Parameters**: `min_cluster_size=5`
-- **Metrics**: Adjusted Rand Index (ARI), Normalized Mutual Information (NMI)
+- **Metrics**: Adjusted Rand Index (ARI), Normalised Mutual Information (NMI)
 
 ## Dataset
 

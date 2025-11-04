@@ -1,5 +1,5 @@
 """Evaluation metrics module."""
-from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
+from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score as normalised_mutual_info_score
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import pandas as pd
 
@@ -47,7 +47,7 @@ def evaluate_hdbscan(y_true, y_pred):
         metrics: Dictionary of evaluation metrics
     """
     ari = adjusted_rand_score(y_true, y_pred)
-    nmi = normalized_mutual_info_score(y_true, y_pred)
+    nmi = normalised_mutual_info_score(y_true, y_pred)
 
     # Count noise points (-1 labels)
     n_noise = sum(y_pred == -1)
